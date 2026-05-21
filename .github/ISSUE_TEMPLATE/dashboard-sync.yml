@@ -1,0 +1,34 @@
+name: Dashboard Sync
+description: Request an update to the dashboard data after project files changed.
+title: "[Dashboard Sync] Update dashboard data"
+labels:
+  - dashboard
+  - sync
+body:
+  - type: textarea
+    id: changed-files
+    attributes:
+      label: Changed source files
+      placeholder: |
+        - 10-agent-team/production-board.md
+        - 10-agent-team/agent-status.md
+        - 06-revision/revision-log.md
+    validations:
+      required: true
+  - type: textarea
+    id: expected-update
+    attributes:
+      label: Expected dashboard update
+      placeholder: |
+        Sync 11-dashboard/app.js to reflect the latest agent status, task status, deliverables, and commands.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Required checks
+      options:
+        - label: Run `node --check 11-dashboard/app.js`.
+          required: true
+        - label: Update `06-revision/revision-log.md`.
+          required: true

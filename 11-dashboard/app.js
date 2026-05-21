@@ -148,6 +148,124 @@ const commands = [
   }
 ];
 
+const repoIssueBaseUrl = "https://github.com/91105eddie/longform-story/issues/new";
+
+const issueActions = [
+  {
+    title: "指派 T008 劇本任務",
+    role: "Screenwriter",
+    label: "agent-task",
+    description: "建立一張 GitHub Issue，要求 Screenwriter 產出第一版動畫劇本。",
+    issueTitle: "[Agent Task] T008 Draft animation script 001",
+    body: [
+      "## Role",
+      "Screenwriter",
+      "",
+      "## Objective",
+      "Draft `05-draft/animation-script-001.md` from the current scene list.",
+      "",
+      "## Input files",
+      "- `05-draft/scene-list-001.md`",
+      "- `04-plot/outline.md`",
+      "- `03-characters/main-characters.md`",
+      "- `02-world/world-overview.md`",
+      "- `10-agent-team/production-board.md`",
+      "- `10-agent-team/agent-status.md`",
+      "",
+      "## Expected output files",
+      "- `05-draft/animation-script-001.md`",
+      "- `10-agent-team/production-board.md`",
+      "- `10-agent-team/agent-status.md`",
+      "- `06-revision/revision-log.md`",
+      "- `11-dashboard/app.js`",
+      "",
+      "## Acceptance criteria",
+      "- Script is scene-based and animation-ready.",
+      "- Internal narration is expressed as visual action, dialogue, voiceover, sound, or screen text.",
+      "- Tracking files and dashboard data are updated."
+    ].join("\n")
+  },
+  {
+    title: "請 Continuity Editor 審查",
+    role: "Continuity Editor",
+    label: "agent-task",
+    description: "建立審查任務，檢查劇本或最新修改是否造成 canon drift。",
+    issueTitle: "[Agent Task] Continuity review latest draft",
+    body: [
+      "## Role",
+      "Continuity Editor",
+      "",
+      "## Objective",
+      "Review the latest changed files for contradictions, canon drift, unresolved setup, and production risks.",
+      "",
+      "## Input files",
+      "- `01-concept/story-bible.md`",
+      "- `02-world/world-overview.md`",
+      "- `03-characters/main-characters.md`",
+      "- `04-plot/outline.md`",
+      "- `05-draft/scene-list-001.md`",
+      "- `05-draft/animation-script-001.md` if available",
+      "",
+      "## Expected output files",
+      "- `06-revision/revision-log.md`",
+      "- Optional review note in `10-agent-team/`",
+      "",
+      "## Acceptance criteria",
+      "- Findings are concrete and file-specific.",
+      "- Open decisions are separated from confirmed contradictions.",
+      "- Production-blocking issues are clearly marked."
+    ].join("\n")
+  },
+  {
+    title: "同步儀表板資料",
+    role: "Production Manager",
+    label: "dashboard,sync",
+    description: "建立同步任務，要求更新 app.js 讓手機儀表板反映最新看板。",
+    issueTitle: "[Dashboard Sync] Update dashboard data",
+    body: [
+      "## Objective",
+      "Sync `11-dashboard/app.js` with the latest project tracking files.",
+      "",
+      "## Changed source files",
+      "- `10-agent-team/production-board.md`",
+      "- `10-agent-team/agent-status.md`",
+      "- `06-revision/revision-log.md`",
+      "",
+      "## Expected output files",
+      "- `11-dashboard/app.js`",
+      "- `06-revision/revision-log.md`",
+      "",
+      "## Required checks",
+      "- Run `node --check 11-dashboard/app.js`.",
+      "- Confirm dashboard task counts and agent status match source files."
+    ].join("\n")
+  },
+  {
+    title: "新增自訂任務",
+    role: "Production Manager",
+    label: "agent-task",
+    description: "開啟空白任務 issue，手動填寫角色、目標、輸入與輸出。",
+    issueTitle: "[Agent Task] ",
+    body: [
+      "## Role",
+      "",
+      "## Objective",
+      "",
+      "## Input files",
+      "- ",
+      "",
+      "## Expected output files",
+      "- ",
+      "",
+      "## Acceptance criteria",
+      "- ",
+      "",
+      "## Notes",
+      ""
+    ].join("\n")
+  }
+];
+
 const statusClass = (status) => status.toLowerCase();
 
 function pill(status) {
@@ -238,6 +356,31 @@ function renderCommands() {
   `).join("");
 }
 
+function issueUrl(action) {
+  const params = new URLSearchParams({
+    title: action.issueTitle,
+    body: action.body,
+    labels: action.label
+  });
+  return `${repoIssueBaseUrl}?${params.toString()}`;
+}
+
+function renderIssueActions() {
+  document.querySelector("#actionGrid").innerHTML = issueActions.map((action) => `
+    <article class="action-card">
+      <div>
+        <span class="metric-label">${action.role}</span>
+        <h3>${action.title}</h3>
+        <p>${action.description}</p>
+      </div>
+      <div class="action-controls">
+        <a class="primary-action" href="${issueUrl(action)}" target="_blank" rel="noopener">建立 Issue</a>
+        <button class="copy-button" type="button" data-issue-index="${issueActions.indexOf(action)}" aria-label="複製 ${action.title} issue 內容">⧉</button>
+      </div>
+    </article>
+  `).join("");
+}
+
 function setActiveButton(buttons, activeButton) {
   buttons.forEach((button) => button.classList.toggle("active", button === activeButton));
 }
@@ -278,6 +421,13 @@ document.addEventListener("click", (event) => {
   const copyButton = event.target.closest("[data-command-index]");
   if (copyButton) {
     copyText(commands[Number(copyButton.dataset.commandIndex)].text);
+    return;
+  }
+
+  const issueCopyButton = event.target.closest("[data-issue-index]");
+  if (issueCopyButton) {
+    const action = issueActions[Number(issueCopyButton.dataset.issueIndex)];
+    copyText(`${action.issueTitle}\n\n${action.body}`);
   }
 });
 
@@ -285,4 +435,5 @@ renderAgents();
 renderTasks();
 renderHealth();
 renderDeliverables();
+renderIssueActions();
 renderCommands();

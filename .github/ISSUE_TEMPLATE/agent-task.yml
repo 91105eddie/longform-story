@@ -1,0 +1,66 @@
+name: Agent Task
+description: Assign a structured task to the story-to-animation agent team.
+title: "[Agent Task] "
+labels:
+  - agent-task
+body:
+  - type: dropdown
+    id: role
+    attributes:
+      label: Agent role
+      options:
+        - Showrunner
+        - Worldbuilding Designer
+        - Character Writer
+        - Plot Architect
+        - Screenwriter
+        - Visual Development Director
+        - Storyboard Planner
+        - Production Manager
+        - Continuity Editor
+    validations:
+      required: true
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: State the concrete result needed.
+      placeholder: Draft animation script 001 from the current scene list.
+    validations:
+      required: true
+  - type: textarea
+    id: input-files
+    attributes:
+      label: Input files
+      placeholder: |
+        - 05-draft/scene-list-001.md
+        - 10-agent-team/production-board.md
+        - 10-agent-team/agent-status.md
+    validations:
+      required: true
+  - type: textarea
+    id: output-files
+    attributes:
+      label: Expected output files
+      placeholder: |
+        - 05-draft/animation-script-001.md
+        - 10-agent-team/production-board.md
+        - 10-agent-team/agent-status.md
+        - 06-revision/revision-log.md
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      placeholder: |
+        - Script is animation-ready and scene-based.
+        - Internal narration is converted into action, dialogue, imagery, voiceover, or sound.
+        - Tracking files are updated.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Add context, constraints, or links.

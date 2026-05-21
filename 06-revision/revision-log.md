@@ -16,6 +16,7 @@
 
 | 日期 | 修改內容 | 備註 |
 | --- | --- | --- |
+| 2026-05-21 | 將儀表板升級為 GitHub Issues 操作型 | 新增 issue templates，並在儀表板加入「建立 GitHub 任務」操作區，可從手機建立預填好的 agent-task / dashboard-sync issue。 |
 | 2026-05-21 | 修正 GitHub Pages workflow 自動啟用設定 | `actions/configure-pages` 加入 `enablement: true`，避免 repository 尚未啟用 Pages 時部署失敗。 |
 | 2026-05-21 | 新增 GitHub Pages 自動部署流程 | 建立 `.github/workflows/deploy-dashboard-pages.yml`，讓 `11-dashboard/` 可透過 GitHub Actions 發布到 GitHub Pages。 |
 | 2026-05-21 | 補上儀表板遠端部署設定 | 新增 `11-dashboard/DEPLOY.md`、`.nojekyll`、`site.webmanifest`，並補充 Cloudflare Pages、GitHub Pages、Netlify 的手機遠端查看流程。 |

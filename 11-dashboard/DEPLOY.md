@@ -7,6 +7,7 @@
 - 目前儀表板只會顯示 `11-dashboard/app.js` 內的資料。
 - 它不會自動讀取 Mac 上的 Markdown 檔案。
 - 每次團隊狀態更新後，需要同步更新 `11-dashboard/app.js` 並重新部署。
+- 操作型任務會透過 GitHub Issues 建立，不會直接遠端執行 Codex。
 - 如果內容不想公開，請使用 Cloudflare Pages Access、Netlify password protection，或改用私人網路方案。
 
 ## 推薦方案 A：Cloudflare Pages

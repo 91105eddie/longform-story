@@ -11,6 +11,7 @@
 - 監看每個智能體的工作狀態。
 - 查看任務看板。
 - 查看第一動畫單元交付物狀態。
+- 建立預填好的 GitHub Issue 任務。
 - 複製常用 Codex 操作指令。
 
 ## 同步規則
@@ -23,6 +24,18 @@
 4. `11-dashboard/app.js`
 
 如果前三個監控檔已更新，但 `11-dashboard/app.js` 沒有更新，儀表板畫面會落後。
+
+## 操作型工作流
+
+儀表板的「建立 GitHub 任務」區塊會開啟預填好的 GitHub Issue：
+
+1. 在手機儀表板點選「建立 Issue」。
+2. GitHub 會開啟新 issue 草稿。
+3. 確認內容後送出。
+4. 回到 Codex，要求它讀取該 issue 或依照 issue 內容執行。
+5. 任務完成後同步更新 tracking files 和 `11-dashboard/app.js`。
+
+目前這不是直接遠端執行 Codex，而是用 GitHub Issues 當作任務佇列與操作入口。
 
 ## 遠端查看
 
