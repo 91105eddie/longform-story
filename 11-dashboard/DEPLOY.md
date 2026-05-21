@@ -33,7 +33,21 @@
 
 適合：最少設定、公開查看。
 
-做法 1：整個 repository 發布
+本專案已提供 GitHub Actions workflow：
+
+- `.github/workflows/deploy-dashboard-pages.yml`
+
+推送到 `main` 後，GitHub Actions 會把 `11-dashboard/` 發布到 GitHub Pages。
+
+預期網址：
+
+```text
+https://91105eddie.github.io/longform-story/
+```
+
+如果 GitHub Pages 尚未啟用，請到 repository 的 Settings -> Pages，將 Source 設為 GitHub Actions。
+
+替代做法：整個 repository 發布
 
 1. 將專案推到 GitHub。
 2. 到 repository 的 Settings。

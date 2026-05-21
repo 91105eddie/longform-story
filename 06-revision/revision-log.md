@@ -16,6 +16,7 @@
 
 | 日期 | 修改內容 | 備註 |
 | --- | --- | --- |
+| 2026-05-21 | 新增 GitHub Pages 自動部署流程 | 建立 `.github/workflows/deploy-dashboard-pages.yml`，讓 `11-dashboard/` 可透過 GitHub Actions 發布到 GitHub Pages。 |
 | 2026-05-21 | 補上儀表板遠端部署設定 | 新增 `11-dashboard/DEPLOY.md`、`.nojekyll`、`site.webmanifest`，並補充 Cloudflare Pages、GitHub Pages、Netlify 的手機遠端查看流程。 |
 | 2026-05-21 | 建立智能體團隊監控儀表板 | 新增 `11-dashboard/`，包含靜態 UI、智能體狀態、任務看板、交付物狀態與可複製的 Codex 操作指令。 |
 | 2026-05-21 | 新增智能體進度監看文件 | 建立 `10-agent-team/agent-status.md` 與 `10-agent-team/progress-monitoring.md`，讓總進度、各角色狀態、阻塞點與交付物狀態可被固定追蹤。 |
