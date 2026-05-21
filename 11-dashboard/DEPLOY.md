@@ -45,7 +45,7 @@
 https://91105eddie.github.io/longform-story/
 ```
 
-如果 GitHub Pages 尚未啟用，請到 repository 的 Settings -> Pages，將 Source 設為 GitHub Actions。
+workflow 會嘗試自動啟用 GitHub Pages。若自動啟用失敗，請到 repository 的 Settings -> Pages，將 Source 設為 GitHub Actions。
 
 替代做法：整個 repository 發布
 
