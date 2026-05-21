@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1f6f78">
+    <title>智能體團隊儀表板</title>
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Dashboard navigation">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">AI</div>
+          <div>
+            <p class="eyebrow">Longform Story</p>
+            <h1>智能體團隊儀表板</h1>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="Sections">
+          <a href="#overview">總覽</a>
+          <a href="#agents">智能體</a>
+          <a href="#tasks">任務</a>
+          <a href="#deliverables">交付物</a>
+          <a href="#commands">操作指令</a>
+        </nav>
+
+        <section class="side-panel" aria-labelledby="stage-title">
+          <h2 id="stage-title">目前階段</h2>
+          <p>First animation unit development</p>
+          <span class="status-pill active">Active</span>
+        </section>
+
+        <section class="side-panel" aria-labelledby="source-title">
+          <h2 id="source-title">資料來源</h2>
+          <ul class="compact-list">
+            <li>production-board.md</li>
+            <li>agent-status.md</li>
+            <li>revision-log.md</li>
+          </ul>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <section id="overview" class="topbar" aria-labelledby="overview-title">
+          <div>
+            <p class="eyebrow">Milestone</p>
+            <h2 id="overview-title">8-12 分鐘動畫 proof-of-concept</h2>
+            <p class="summary">目前瓶頸是 T008：完成第一版動畫劇本。劇本完成後，視覺開發、連貫性審查與分鏡才能進入下一輪。</p>
+          </div>
+          <div class="progress-block" aria-label="Task completion">
+            <span class="progress-number">70%</span>
+            <span class="progress-label">任務完成 7 / 10</span>
+            <div class="progress-track"><span style="width: 70%"></span></div>
+          </div>
+        </section>
+
+        <section class="metrics-grid" aria-label="Project metrics">
+          <article class="metric">
+            <span class="metric-label">Active</span>
+            <strong>2</strong>
+            <p>Screenwriter, Production Manager</p>
+          </article>
+          <article class="metric">
+            <span class="metric-label">Waiting</span>
+            <strong>3</strong>
+            <p>Visual, Storyboard, Continuity</p>
+          </article>
+          <article class="metric">
+            <span class="metric-label">Done</span>
+            <strong>4</strong>
+            <p>Showrunner, World, Character, Plot</p>
+          </article>
+          <article class="metric warning">
+            <span class="metric-label">Bottleneck</span>
+            <strong>T008</strong>
+            <p>Draft animation script 001</p>
+          </article>
+        </section>
+
+        <section class="content-section" aria-labelledby="health-title">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Health Check</p>
+              <h2 id="health-title">製作健康度</h2>
+            </div>
+          </div>
+          <div class="health-grid" id="healthGrid"></div>
+        </section>
+
+        <section id="agents" class="content-section" aria-labelledby="agents-title">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Team</p>
+              <h2 id="agents-title">智能體工作狀況</h2>
+            </div>
+            <div class="segmented-control" role="group" aria-label="Agent status filters">
+              <button class="filter-button active" data-agent-filter="All">All</button>
+              <button class="filter-button" data-agent-filter="Active">Active</button>
+              <button class="filter-button" data-agent-filter="Waiting">Waiting</button>
+              <button class="filter-button" data-agent-filter="Done">Done</button>
+            </div>
+          </div>
+          <div class="table-shell">
+            <table>
+              <thead>
+                <tr>
+                  <th>智能體</th>
+                  <th>狀態</th>
+                  <th>目前任務</th>
+                  <th>產出</th>
+                  <th>阻塞點</th>
+                  <th>下一次檢查</th>
+                </tr>
+              </thead>
+              <tbody id="agentTable"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="tasks" class="content-section" aria-labelledby="tasks-title">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Board</p>
+              <h2 id="tasks-title">任務看板</h2>
+            </div>
+            <div class="segmented-control" role="group" aria-label="Task status filters">
+              <button class="filter-button active" data-task-filter="All">All</button>
+              <button class="filter-button" data-task-filter="Todo">Todo</button>
+              <button class="filter-button" data-task-filter="Done">Done</button>
+            </div>
+          </div>
+          <div class="task-board" id="taskBoard"></div>
+        </section>
+
+        <section id="deliverables" class="content-section" aria-labelledby="deliverables-title">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Artifacts</p>
+              <h2 id="deliverables-title">第一動畫單元交付物</h2>
+            </div>
+          </div>
+          <div class="deliverable-grid" id="deliverableGrid"></div>
+        </section>
+
+        <section id="commands" class="content-section" aria-labelledby="commands-title">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Operations</p>
+              <h2 id="commands-title">Codex 操作指令</h2>
+            </div>
+          </div>
+          <div class="command-grid" id="commandGrid"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">已複製</div>
+    <script src="app.js"></script>
+  </body>
+</html>

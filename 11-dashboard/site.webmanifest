@@ -1,0 +1,11 @@
+{
+  "name": "Longform Story Agent Dashboard",
+  "short_name": "Agent Dashboard",
+  "description": "Monitor the longform story-to-animation agent team.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f1eb",
+  "theme_color": "#1f6f78",
+  "lang": "zh-Hant",
+  "orientation": "any"
+}
